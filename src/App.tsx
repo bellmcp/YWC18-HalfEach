@@ -8,13 +8,16 @@ import ShopCard from "./components/Result";
 import SideBar from "./components/SideBar";
 
 const { Title } = Typography;
-const { Header, Content, Footer } = Layout;
+const { Content, Footer } = Layout;
 
 function App() {
   const [categories, setCategories] = useState();
   const [provinces, setProvinces] = useState();
   const [priceRange, setPriceRange] = useState();
   const [merchants, setMerchants] = useState();
+  const [activeCategory, setActiveCategory] = useState(
+    "ร้านอาหารและเครื่องดื่ม"
+  );
 
   useEffect(() => {
     axios
@@ -41,7 +44,6 @@ function App() {
         }}
       >
         <NavBar provinces={provinces} categories={categories} />
-
         <Row
           justify="start"
           align="middle"
@@ -66,13 +68,15 @@ function App() {
 
         <Content style={{ padding: "30px 50px" }}>
           <Title level={3} style={{ marginBottom: 40 }}>
-            ผลการค้นหา ร้านอาหารและเครื่องดื่ม ทั้งหมด
+            ผลการค้นหา {activeCategory} ทั้งหมด
           </Title>
           <Layout style={{ background: "none" }}>
             <SideBar
               provinces={provinces}
               categories={categories}
               priceRange={priceRange}
+              activeCategory={activeCategory}
+              setActiveCategory={setActiveCategory}
             />
             <Content style={{ marginLeft: 30 }}>
               <ShopCard merchants={merchants} />
