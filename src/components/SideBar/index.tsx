@@ -28,7 +28,17 @@ export default function SideBar({
   const [activeSubCategory, setActiveSubCategory] = useState(0);
 
   return (
-    <Layout.Sider className="site-layout-background" width={300}>
+    <Layout.Sider
+      className="site-layout-background"
+      width={350}
+      style={{
+        backgroundColor: "#fff",
+        padding: "1rem",
+        border: "1px solid #A2ADBD",
+        borderRadius: 4,
+        height: "fit-content",
+      }}
+    >
       <Space direction="vertical" size="large" style={{ width: "100%" }}>
         <div>
           <Typography.Title level={5}>ประเภทร้านค้า</Typography.Title>

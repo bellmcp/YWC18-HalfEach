@@ -34,7 +34,6 @@ function App() {
     <>
       <Layout
         style={{
-          height: "2000px",
           backgroundImage: `url(${bg})`,
           backgroundPosition: "center center",
           backgroundSize: "cover",
@@ -50,7 +49,7 @@ function App() {
             margin: 0,
             backgroundColor: "rgb(39, 57, 124)",
             padding: "0 50px",
-            height: "50px",
+            minHeight: "50px",
           }}
         >
           <Breadcrumb>
@@ -66,23 +65,23 @@ function App() {
         </Row>
 
         <Content style={{ padding: "20px 50px" }}>
-          <Title level={3}>ผลการค้นหา ร้านอาหารและเครื่องดื่ม ทั้งหมด</Title>
-          <Layout
-            className="site-layout-background"
-            style={{ padding: "24px" }}
-          >
+          <Title level={3} style={{ marginBottom: 40 }}>
+            ผลการค้นหา ร้านอาหารและเครื่องดื่ม ทั้งหมด
+          </Title>
+          <Layout style={{ background: "none" }}>
             <SideBar
               provinces={provinces}
               categories={categories}
               priceRange={priceRange}
             />
-            <Content style={{ padding: "0 24px", minHeight: 280 }}>
+            <Content style={{ marginLeft: 30 }}>
               <ShopCard merchants={merchants} />
             </Content>
           </Layout>
         </Content>
-        <Footer style={{ textAlign: "center" }}>
-          Created by Wutipat Khamnuansin for 18th Young Webmaster Camp.
+        <Footer style={{ textAlign: "center", backgroundColor: "#fff" }}>
+          Created by <a href="https://bellmcp.work">Wutipat Khamnuansin</a> for
+          18th Young Webmaster Camp.
         </Footer>
       </Layout>
     </>
