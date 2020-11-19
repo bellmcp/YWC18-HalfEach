@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./assets/logo.png";
 import bg from "./assets/bg.png";
-import "./App.css";
+import "./App.less";
 import { Layout, Menu, Breadcrumb } from "antd";
 import {
   UserOutlined,
