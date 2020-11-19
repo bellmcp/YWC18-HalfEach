@@ -22,6 +22,7 @@ const { Option } = Select;
 interface NavBarProps {
   provinces: string[] | undefined;
   categories: CategoryType[] | undefined;
+  showDrawer: () => void;
 }
 
 function renderCategoryIcon(index: number) {
@@ -33,7 +34,11 @@ function renderCategoryIcon(index: number) {
   }
 }
 
-export default function NavBar({ provinces, categories }: NavBarProps) {
+export default function NavBar({
+  provinces,
+  categories,
+  showDrawer,
+}: NavBarProps) {
   const matches = useMedia({ queries: MEDIA_QUERIES });
 
   return (
@@ -111,6 +116,7 @@ export default function NavBar({ provinces, categories }: NavBarProps) {
             />
             {!matches.large ? (
               <Button
+                onClick={showDrawer}
                 type="text"
                 style={{
                   width: !matches.large ? "30px" : "5%",

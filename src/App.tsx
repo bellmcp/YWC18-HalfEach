@@ -4,7 +4,7 @@ import "./App.less";
 import { useMedia } from "react-media";
 import { MEDIA_QUERIES } from "./common/media";
 import bg from "./assets/img/bg.png";
-import { Breadcrumb, Layout, Typography, Row, Button } from "antd";
+import { Breadcrumb, Layout, Typography, Row } from "antd";
 import NavBar from "./components/NavBar";
 import ShopCard from "./components/Result";
 import SideBar from "./components/SideBar";
@@ -56,7 +56,11 @@ function App() {
           backgroundAttachment: "fixed",
         }}
       >
-        <NavBar provinces={provinces} categories={categories} />
+        <NavBar
+          provinces={provinces}
+          categories={categories}
+          showDrawer={showDrawer}
+        />
         <Row
           justify="start"
           align="middle"
@@ -67,9 +71,6 @@ function App() {
             minHeight: "50px",
           }}
         >
-          <Button type="primary" onClick={showDrawer}>
-            Open
-          </Button>
           <SideDrawer onClose={onClose} visible={visible} />
           <Breadcrumb>
             <Breadcrumb.Item>
