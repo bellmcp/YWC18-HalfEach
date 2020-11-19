@@ -2,15 +2,13 @@ import React from "react";
 import logo from "./assets/logo.png";
 import bg from "./assets/bg.png";
 import "./App.less";
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout, Breadcrumb, Typography, Select } from "antd";
 
-import { Select } from "antd";
-import { Typography } from "antd";
 import SideBar from "./components/SideBar";
+import ShopCard from "./components/ShopCard";
 
 const { Title } = Typography;
-const { SubMenu } = Menu;
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer } = Layout;
 const { Option } = Select;
 
 function handleChange(value: string) {
@@ -90,7 +88,7 @@ function App() {
         <Layout className="site-layout-background" style={{ padding: "24px" }}>
           <SideBar />
           <Content style={{ padding: "0 24px", minHeight: 280 }}>
-            Content
+            <ShopCard />
           </Content>
         </Layout>
       </Content>

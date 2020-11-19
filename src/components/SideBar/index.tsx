@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Layout, Typography, Radio } from "antd";
+import { Layout, Radio } from "antd";
 import { Divider, Select } from "antd";
 
-const { Title } = Typography;
 const { Sider } = Layout;
 const { Option } = Select;
 

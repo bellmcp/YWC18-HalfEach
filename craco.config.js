@@ -7,7 +7,10 @@ module.exports = {
       options: {
         lessLoaderOptions: {
           lessOptions: {
-            modifyVars: { "@font-family": "'Kanit', sans-serif" },
+            modifyVars: {
+              "@font-family": "'Kanit', sans-serif",
+              "@card-padding-base": 0,
+            },
             javascriptEnabled: true,
           },
         },
