@@ -1,74 +1,83 @@
 import React, { useState } from "react";
-import { Layout, Radio } from "antd";
-import { Divider, Select } from "antd";
+import { Layout, Radio, Divider, Select } from "antd";
+import { CategoryType } from "../../common/types";
 
 const { Sider } = Layout;
 const { Option } = Select;
 
-export default function SideBar() {
+interface SideBarProps {
+  provinces: string[] | undefined;
+  categories: CategoryType[] | undefined;
+  priceRange: string[] | undefined;
+}
+
+export default function SideBar({
+  provinces,
+  categories,
+  priceRange,
+}: SideBarProps) {
   const radioStyle = {
     display: "block",
     height: "30px",
     lineHeight: "30px",
   };
 
-  const [value, setValue] = useState(0);
+  const [activeCategory, setActiveCategory] = useState(1);
+  const [activeSubCategory, setActiveSubCategory] = useState(0);
 
   return (
     <Sider className="site-layout-background" width={300}>
       <Divider orientation="left">
         <b>ประเภทร้านค้า</b>
       </Divider>
-      <Radio.Group onChange={(e) => setValue(e.target.value)} value={value}>
-        <Radio style={radioStyle} value={1}>
+      <Radio.Group
+        defaultValue={1}
+        onChange={(e) => setActiveCategory(e.target.value)}
+        value={activeCategory}
+      >
+        <Radio style={radioStyle} value={0}>
           ทั้งหมด
         </Radio>
-        <Radio style={radioStyle} value={2}>
-          ร้านอาหารและเครื่องดื่ม
-        </Radio>
-        <Radio style={radioStyle} value={3}>
-          ร้านค้า OTOP
-        </Radio>
-        <Radio style={radioStyle} value={4}>
-          ร้านธงฟ้า
-        </Radio>
-        <Radio style={radioStyle} value={5}>
-          สินค้าทั่วไป
-        </Radio>
+        {categories?.map((item, index) => (
+          <Radio style={radioStyle} value={index + 1}>
+            {item?.name}
+          </Radio>
+        ))}
       </Radio.Group>
       <Divider orientation="left">
         <b>จังหวัด / ใกล้ฉัน</b>
       </Divider>
-      <Select defaultValue="all" style={{ width: "100%" }}>
+      <Select defaultValue="nearme" style={{ width: "100%" }}>
+        <Option value="nearme">พื้นที่ใกล้ฉัน</Option>
         <Option value="all">สถานที่ทั้งหมด</Option>
-        <Option value="krabi">กระบี่</Option>
+        {provinces?.map((item, index) => (
+          <Option value={index}>{item}</Option>
+        ))}
       </Select>
       <Divider orientation="left">
         <b>ราคา</b>
       </Divider>
       <Select placeholder="กรุณาเลือก" style={{ width: "100%" }}>
         <Option value="all">ทั้งหมด</Option>
-        <Option value="100">ไม่เกิน 100 บาท</Option>
+        {priceRange?.map((item, index) => (
+          <Option value={index}>{item}</Option>
+        ))}
       </Select>
       <Divider orientation="left">
         <b>ประเภทร้านอาหารและเครื่องดื่ม</b>
       </Divider>
-      <Radio.Group onChange={(e) => setValue(e.target.value)} value={value}>
+      <Radio.Group
+        onChange={(e) => setActiveSubCategory(e.target.value)}
+        value={activeSubCategory}
+      >
         <Radio style={radioStyle} value={1}>
           ทั้งหมด
         </Radio>
-        <Radio style={radioStyle} value={2}>
-          ร้านอาหารและเครื่องดื่ม
-        </Radio>
-        <Radio style={radioStyle} value={3}>
-          ร้านค้า OTOP
-        </Radio>
-        <Radio style={radioStyle} value={4}>
-          ร้านธงฟ้า
-        </Radio>
-        <Radio style={radioStyle} value={5}>
-          สินค้าทั่วไป
-        </Radio>
+        {categories?.map((item, index) => (
+          <Radio style={radioStyle} value={index + 1}>
+            {item?.name}
+          </Radio>
+        ))}
       </Radio.Group>
     </Sider>
   );
