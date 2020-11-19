@@ -1,4 +1,6 @@
 import React from "react";
+import { useMedia } from "react-media";
+import { MEDIA_QUERIES } from "../../common/media";
 import { Card, Row, Col, Typography, Divider, Space, Tag, Tooltip } from "antd";
 import { MerchantType } from "../../common/types";
 import { faCarSide, faDog, faEdit } from "@fortawesome/free-solid-svg-icons";
@@ -66,6 +68,8 @@ export default function CardItem({
   addressProvinceName,
   addressDistrictName,
 }: MerchantType) {
+  const matches = useMedia({ queries: MEDIA_QUERIES });
+
   return (
     <Card
       style={{
@@ -75,16 +79,19 @@ export default function CardItem({
         marginBottom: 10,
       }}
     >
-      <Row style={{ width: "100%" }}>
-        <Col flex="250px" style={{ padding: 5 }}>
+      <Row style={{ width: "100%" }} wrap={!matches.large ? true : false}>
+        <Col
+          flex={!matches.large ? "auto" : "250px"}
+          style={{ padding: !matches.large ? 0 : 5 }}
+        >
           <img
             src={coverImageId}
             alt="shop"
             style={{
               objectFit: "cover",
-              width: "250px",
+              width: !matches.large ? "100%" : "250px",
               height: "250px",
-              borderRadius: "4px",
+              borderRadius: !matches.large ? "4px 4px 0 0" : "4px",
             }}
           />
         </Col>
@@ -98,14 +105,20 @@ export default function CardItem({
                 <Tag color="rgb(27, 195, 0)">เปิดอยู่</Tag>
               ) : null}
             </Space>
-            <Space size="middle" split={<Divider type="vertical" />}>
-              <Text type="secondary">{subcategoryName}</Text>
-              <Text type="secondary">
+            <Space
+              size="small"
+              split={<Divider type="vertical" />}
+              style={{ display: "flex" }}
+            >
+              <Text type="secondary" style={{ flexWrap: "wrap" }}>
+                {subcategoryName}
+              </Text>
+              <Text type="secondary" style={{ flexWrap: "wrap" }}>
                 <div style={{ letterSpacing: "2px" }}>
                   {renderPriceLevel(priceLevel)}
                 </div>
               </Text>
-              <Text type="secondary">
+              <Text type="secondary" style={{ flexWrap: "wrap" }}>
                 {addressDistrictName} {addressProvinceName}
               </Text>
             </Space>
