@@ -100,7 +100,11 @@ export default function CardItem({
             </Space>
             <Space size="middle" split={<Divider type="vertical" />}>
               <Text type="secondary">{subcategoryName}</Text>
-              <Text type="secondary">{renderPriceLevel(priceLevel)}</Text>
+              <Text type="secondary">
+                <div style={{ letterSpacing: "2px" }}>
+                  {renderPriceLevel(priceLevel)}
+                </div>
+              </Text>
               <Text type="secondary">
                 {addressDistrictName} {addressProvinceName}
               </Text>

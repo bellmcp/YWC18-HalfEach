@@ -64,7 +64,7 @@ function App() {
           </Breadcrumb>
         </Row>
 
-        <Content style={{ padding: "20px 50px" }}>
+        <Content style={{ padding: "30px 50px" }}>
           <Title level={3} style={{ marginBottom: 40 }}>
             ผลการค้นหา ร้านอาหารและเครื่องดื่ม ทั้งหมด
           </Title>

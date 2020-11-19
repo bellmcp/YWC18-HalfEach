@@ -1,6 +1,6 @@
 export interface CategoryType {
     name: string;
-    subCategories: string[];
+    subcategories: string[];
   }
 
   export interface MerchantType {

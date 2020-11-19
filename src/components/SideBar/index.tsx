@@ -27,6 +27,8 @@ export default function SideBar({
   const [activeCategory, setActiveCategory] = useState(1);
   const [activeSubCategory, setActiveSubCategory] = useState(0);
 
+  const subCategories = categories?.slice(0, 1)[0].subcategories;
+
   return (
     <Layout.Sider
       className="site-layout-background"
@@ -99,9 +101,10 @@ export default function SideBar({
             <Radio style={radioStyle} value={0}>
               ทั้งหมด
             </Radio>
-            {categories?.map((item, index) => (
+            {console.log(subCategories)}
+            {subCategories?.map((item, index) => (
               <Radio style={radioStyle} value={index + 1}>
-                {item?.name}
+                {item}
               </Radio>
             ))}
           </Radio.Group>
