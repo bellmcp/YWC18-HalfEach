@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.less";
 import bg from "./assets/bg.png";
-import { Breadcrumb, Layout, Typography } from "antd";
+import { Breadcrumb, Layout, Typography, Row } from "antd";
 import NavBar from "./components/NavBar";
 import ShopCard from "./components/Result";
 import SideBar from "./components/SideBar";
 
 const { Title } = Typography;
-const { Content, Footer } = Layout;
+const { Header, Content, Footer } = Layout;
 
 function App() {
   const [categories, setCategories] = useState();
@@ -42,15 +42,30 @@ function App() {
         }}
       >
         <NavBar provinces={provinces} categories={categories} />
-        <Content style={{ padding: "0 50px" }}>
-          <Breadcrumb
-            style={{
-              margin: "16px 0",
-            }}
-          >
-            <Breadcrumb.Item>หน้าแรก</Breadcrumb.Item>
-            <Breadcrumb.Item>ค้นหา</Breadcrumb.Item>
+
+        <Row
+          justify="start"
+          align="middle"
+          style={{
+            margin: 0,
+            backgroundColor: "rgb(39, 57, 124)",
+            padding: "0 50px",
+            height: "46px",
+          }}
+        >
+          <Breadcrumb>
+            <Breadcrumb.Item>
+              <a href="/">
+                <u>หน้าแรก</u>
+              </a>
+            </Breadcrumb.Item>
+            <Breadcrumb.Item>
+              <b>ค้นหา</b>
+            </Breadcrumb.Item>
           </Breadcrumb>
+        </Row>
+
+        <Content style={{ padding: "20px 50px" }}>
           <Title level={3}>ผลการค้นหา ร้านอาหารและเครื่องดื่ม ทั้งหมด</Title>
           <Layout
             className="site-layout-background"

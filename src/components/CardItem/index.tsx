@@ -18,7 +18,7 @@ export default function CardItem({
   addressDistrictName,
 }: MerchantType) {
   return (
-    <Card style={{ width: "100%", borderRadius: 4 }}>
+    <Card style={{ width: "100%", borderRadius: 4, marginBottom: 10 }}>
       <Row>
         <Col flex="250px" style={{ padding: 5 }}>
           <img
