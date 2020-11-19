@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.less";
-import bg from "./assets/bg.png";
+import bg from "./assets/img/bg.png";
 import { Breadcrumb, Layout, Typography, Row } from "antd";
 import NavBar from "./components/NavBar";
 import ShopCard from "./components/Result";
@@ -50,7 +50,7 @@ function App() {
             margin: 0,
             backgroundColor: "rgb(39, 57, 124)",
             padding: "0 50px",
-            height: "46px",
+            height: "50px",
           }}
         >
           <Breadcrumb>

@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { Layout, Radio, Select, Typography, Space } from "antd";
 import { CategoryType } from "../../common/types";
+import {
+  faMapMarkerAlt,
+  faMapMarkedAlt,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface SideBarProps {
   provinces: string[] | undefined;
@@ -45,8 +50,20 @@ export default function SideBar({
         <div>
           <Typography.Title level={5}>จังหวัด / ใกล้ฉัน</Typography.Title>
           <Select defaultValue="nearme" style={{ width: "100%" }}>
-            <Select.Option value="nearme">พื้นที่ใกล้ฉัน</Select.Option>
-            <Select.Option value="all">สถานที่ทั้งหมด</Select.Option>
+            <Select.Option value="nearme">
+              <FontAwesomeIcon
+                icon={faMapMarkerAlt}
+                style={{ marginRight: 10 }}
+              />
+              พื้นที่ใกล้ฉัน
+            </Select.Option>
+            <Select.Option value="all">
+              <FontAwesomeIcon
+                icon={faMapMarkedAlt}
+                style={{ marginRight: 10 }}
+              />
+              สถานที่ทั้งหมด
+            </Select.Option>
             {provinces?.map((item, index) => (
               <Select.Option value={index}>{item}</Select.Option>
             ))}
@@ -69,7 +86,7 @@ export default function SideBar({
             onChange={(e) => setActiveSubCategory(e.target.value)}
             value={activeSubCategory}
           >
-            <Radio style={radioStyle} value={1}>
+            <Radio style={radioStyle} value={0}>
               ทั้งหมด
             </Radio>
             {categories?.map((item, index) => (
