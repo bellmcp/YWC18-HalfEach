@@ -19,40 +19,38 @@ export default function Result({
   activePriceRange,
 }: ResultProps) {
   const matches = useMedia({ queries: MEDIA_QUERIES });
-  const generalMerchants = merchants?.slice(0, 2);
-  const restaurantMerchants = merchants?.slice(2);
+  const generalMerchants = merchants?.filter(
+    (merchant) => merchant.categoryName !== "ร้านอาหาร"
+  );
 
   function renderMerchantsList(activeCategory: string) {
     switch (activeCategory) {
       case "":
         return merchants;
       case "ร้านอาหารและเครื่องดื่ม":
-        return renderPriceRangeMatchedList(activePriceRange);
+        return renderPriceRangeMatchedRestaurant(activePriceRange);
       case "ร้านค้า OTOP":
-        return undefined;
+        return [];
       case "ร้านธงฟ้า":
-        return undefined;
+        return [];
       case "สินค้าทั่วไป":
         return generalMerchants;
       default:
-        return undefined;
+        return [];
     }
   }
 
-  function renderPriceRangeMatchedList(activePriceRange: number) {
-    switch (activePriceRange) {
-      case 0:
-        return restaurantMerchants;
-      case 1:
-        return undefined;
-      case 2:
-        return undefined;
-      case 3:
-        return restaurantMerchants?.slice(1);
-      case 4:
-        return restaurantMerchants?.slice(0, 1);
-      default:
-        return restaurantMerchants;
+  function renderPriceRangeMatchedRestaurant(activePriceRange: number) {
+    if (activePriceRange === 0) {
+      return merchants?.filter(
+        (merchant) => merchant.categoryName === "ร้านอาหาร"
+      );
+    } else {
+      return merchants?.filter(
+        (merchant) =>
+          merchant.categoryName === "ร้านอาหาร" &&
+          merchant.priceLevel === activePriceRange
+      );
     }
   }
 
@@ -63,7 +61,7 @@ export default function Result({
       ))}
       <div style={{ margin: "30px 0" }}>
         <Row justify="center" align="middle">
-          {renderMerchantsList(activeCategory) !== undefined ? (
+          {renderMerchantsList(activeCategory)?.length !== 0 ? (
             <Col style={{ width: !matches.large ? "100%" : "50%" }}>
               <Button size="large" block>
                 ดูเพิ่มเติม

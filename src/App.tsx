@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.less";
+import bg from "./assets/img/bg.png";
 import { useMedia } from "react-media";
 import { MEDIA_QUERIES } from "./common/media";
-import bg from "./assets/img/bg.png";
 import { Breadcrumb, Layout, Typography, Row } from "antd";
 import NavBar from "./components/NavBar";
 import ShopCard from "./components/Result";
@@ -15,7 +15,6 @@ const { Content, Footer } = Layout;
 
 function App() {
   const matches = useMedia({ queries: MEDIA_QUERIES });
-
   const [visible, setVisible] = useState(false);
   const showDrawer = () => {
     setVisible(true);
@@ -23,7 +22,6 @@ function App() {
   const onClose = () => {
     setVisible(false);
   };
-
   const [categories, setCategories] = useState();
   const [provinces, setProvinces] = useState();
   const [priceRange, setPriceRange] = useState();

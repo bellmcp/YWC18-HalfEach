@@ -100,6 +100,7 @@ export default function Filter({
         <div>
           <Typography.Title level={5}>ราคา</Typography.Title>
           <Select
+            defaultValue={activePriceRange}
             placeholder="กรุณาเลือก"
             onChange={handlePriceRangeSelect}
             style={{ width: "100%" }}
