@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/YWC18-HalfEach/static/css/main.a70e8e2f.chunk.css",
-    "main.js": "/YWC18-HalfEach/static/js/main.bcdf7bc8.chunk.js",
-    "main.js.map": "/YWC18-HalfEach/static/js/main.bcdf7bc8.chunk.js.map",
+    "main.js": "/YWC18-HalfEach/static/js/main.6aad4e34.chunk.js",
+    "main.js.map": "/YWC18-HalfEach/static/js/main.6aad4e34.chunk.js.map",
     "runtime-main.js": "/YWC18-HalfEach/static/js/runtime-main.2a1043d7.js",
     "runtime-main.js.map": "/YWC18-HalfEach/static/js/runtime-main.2a1043d7.js.map",
     "static/js/2.705d5fb6.chunk.js": "/YWC18-HalfEach/static/js/2.705d5fb6.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.2a1043d7.js",
     "static/js/2.705d5fb6.chunk.js",
     "static/css/main.a70e8e2f.chunk.css",
-    "static/js/main.bcdf7bc8.chunk.js"
+    "static/js/main.6aad4e34.chunk.js"
   ]
 }
