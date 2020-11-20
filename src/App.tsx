@@ -71,7 +71,15 @@ function App() {
             minHeight: "50px",
           }}
         >
-          <SideDrawer onClose={onClose} visible={visible} />
+          <SideDrawer
+            onClose={onClose}
+            visible={visible}
+            provinces={provinces}
+            categories={categories}
+            priceRange={priceRange}
+            activeCategory={activeCategory}
+            setActiveCategory={setActiveCategory}
+          />
           <Breadcrumb>
             <Breadcrumb.Item>
               <a href="/">
