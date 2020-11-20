@@ -106,7 +106,9 @@ export default function CardItem({
               </Title>
               {isOpen === "Y" ? (
                 <Tag color="rgb(27, 195, 0)">เปิดอยู่</Tag>
-              ) : null}
+              ) : (
+                <Tag color="rgb(161, 161, 161)">ปิดแล้ว</Tag>
+              )}
             </Space>
             <Space
               direction={
