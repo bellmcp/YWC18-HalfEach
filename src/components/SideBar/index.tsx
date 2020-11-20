@@ -21,7 +21,7 @@ export default function SideBar({
   return (
     <Layout.Sider
       className="site-layout-background"
-      width={350}
+      width={320}
       style={{
         backgroundColor: "#fff",
         padding: "1rem",

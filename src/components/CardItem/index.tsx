@@ -69,6 +69,9 @@ export default function CardItem({
   addressDistrictName,
 }: MerchantType) {
   const matches = useMedia({ queries: MEDIA_QUERIES });
+  const isBeforeMobile = useMedia({
+    query: "(min-width: 992px) and (max-width: 1250px)",
+  });
 
   return (
     <Card
@@ -90,7 +93,7 @@ export default function CardItem({
             style={{
               objectFit: "cover",
               width: !matches.large ? "100%" : "250px",
-              height: "250px",
+              height: isBeforeMobile ? "100%" : "250px",
               borderRadius: !matches.large ? "4px 4px 0 0" : "4px",
             }}
           />
@@ -106,8 +109,15 @@ export default function CardItem({
               ) : null}
             </Space>
             <Space
-              size="small"
-              split={<Divider type="vertical" />}
+              direction={
+                matches.xs || isBeforeMobile ? "vertical" : "horizontal"
+              }
+              size={matches.xs || isBeforeMobile ? 0 : "small"}
+              split={
+                matches.xs || isBeforeMobile ? null : (
+                  <Divider type="vertical" />
+                )
+              }
               style={{ display: "flex" }}
             >
               <Text type="secondary" style={{ flexWrap: "wrap" }}>
