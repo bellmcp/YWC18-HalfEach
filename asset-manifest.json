@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/YWC18-HalfEach/static/css/main.d6b2b247.chunk.css",
-    "main.js": "/YWC18-HalfEach/static/js/main.75ee31de.chunk.js",
-    "main.js.map": "/YWC18-HalfEach/static/js/main.75ee31de.chunk.js.map",
+    "main.css": "/YWC18-HalfEach/static/css/main.a70e8e2f.chunk.css",
+    "main.js": "/YWC18-HalfEach/static/js/main.eae6c3b1.chunk.js",
+    "main.js.map": "/YWC18-HalfEach/static/js/main.eae6c3b1.chunk.js.map",
     "runtime-main.js": "/YWC18-HalfEach/static/js/runtime-main.37705eae.js",
     "runtime-main.js.map": "/YWC18-HalfEach/static/js/runtime-main.37705eae.js.map",
     "static/js/2.efef8247.chunk.js": "/YWC18-HalfEach/static/js/2.efef8247.chunk.js",
@@ -10,14 +10,14 @@
     "static/js/3.c558851b.chunk.js": "/YWC18-HalfEach/static/js/3.c558851b.chunk.js",
     "static/js/3.c558851b.chunk.js.map": "/YWC18-HalfEach/static/js/3.c558851b.chunk.js.map",
     "index.html": "/YWC18-HalfEach/index.html",
-    "static/css/main.d6b2b247.chunk.css.map": "/YWC18-HalfEach/static/css/main.d6b2b247.chunk.css.map",
+    "static/css/main.a70e8e2f.chunk.css.map": "/YWC18-HalfEach/static/css/main.a70e8e2f.chunk.css.map",
     "static/js/2.efef8247.chunk.js.LICENSE.txt": "/YWC18-HalfEach/static/js/2.efef8247.chunk.js.LICENSE.txt",
     "static/media/bg.ac869927.png": "/YWC18-HalfEach/static/media/bg.ac869927.png"
   },
   "entrypoints": [
     "static/js/runtime-main.37705eae.js",
     "static/js/2.efef8247.chunk.js",
-    "static/css/main.d6b2b247.chunk.css",
-    "static/js/main.75ee31de.chunk.js"
+    "static/css/main.a70e8e2f.chunk.css",
+    "static/js/main.eae6c3b1.chunk.js"
   ]
 }
