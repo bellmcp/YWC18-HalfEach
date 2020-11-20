@@ -94,13 +94,11 @@ export default function NavBar({
                 width: !matches.large ? "calc(100% - 90px)" : "75%",
               }}
               placeholder="ค้นหา ชื่อ ร้านอาหาร และเครื่องดื่ม ร้านธงฟ้า ร้านค้า OTOP และสินค้าทั่วไป"
-              optionFilterProp="children"
-              filterOption={(input, option) =>
-                option?.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-              }
+              // optionFilterProp="children"
+              // filterOption={(input, option) => option?.indexOf(input) >= 0}
             >
               {categories?.map((item, index) => (
-                <Option value={index}>
+                <Option value={item?.name}>
                   <FontAwesomeIcon
                     icon={renderCategoryIcon(index)}
                     style={{ marginRight: 10 }}

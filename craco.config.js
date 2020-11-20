@@ -9,6 +9,7 @@ module.exports = {
           lessOptions: {
             modifyVars: {
               "@font-family": "'Kanit', sans-serif",
+              "@text-color-secondary": "rgba(0, 0, 0, 0.38)",
               "@card-padding-base": 0,
               "@breadcrumb-base-color": "#fff",
               "@breadcrumb-last-item-color": "#fff",
