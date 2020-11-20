@@ -55,6 +55,19 @@ function renderFacilities(facilities: string) {
   }
 }
 
+function renderIsOpenBadge(isOpen: string) {
+  switch (isOpen) {
+    case "Y":
+      return <Tag color="rgb(27, 195, 0)">เปิดอยู่</Tag>;
+    case "N":
+      return <Tag color="rgb(161, 161, 161)">ปิดแล้ว</Tag>;
+    case "N/A":
+      return null;
+    default:
+      return null;
+  }
+}
+
 export default function CardItem({
   shopNameTH,
   categoryName,
@@ -104,11 +117,7 @@ export default function CardItem({
               <Title level={4} style={{ margin: 0 }}>
                 {shopNameTH}
               </Title>
-              {isOpen === "Y" ? (
-                <Tag color="rgb(27, 195, 0)">เปิดอยู่</Tag>
-              ) : (
-                <Tag color="rgb(161, 161, 161)">ปิดแล้ว</Tag>
-              )}
+              {renderIsOpenBadge(isOpen)}
             </Space>
             <Space
               direction={
