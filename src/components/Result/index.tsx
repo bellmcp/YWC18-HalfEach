@@ -23,9 +23,6 @@ export default function Result({
   activeProvince,
 }: ResultProps) {
   const matches = useMedia({ queries: MEDIA_QUERIES });
-  const generalMerchants = merchants?.filter(
-    (merchant) => merchant.categoryName !== "ร้านอาหาร"
-  );
 
   function renderMerchantsList(
     activeCategory: string,
@@ -49,18 +46,18 @@ export default function Result({
         return [];
       case activeCategory === "สินค้าทั่วไป" &&
         activeSubCategory === "สินค้าเกี่ยวกับการตกแต่งบ้าน":
-        return generalMerchants?.filter(
+        return renderPriceRangeMatchedGeneral(activePriceRange)?.filter(
           (merchant) =>
             merchant.subcategoryName ===
             "สินค้า และ บริการ เกี่ยวกับการตกแต่งบ้าน"
         );
       case activeCategory === "สินค้าทั่วไป" &&
         activeSubCategory === "ร้านขายเสื้อผ้า / เครื่องประดับ / สินค้าแฟชั่น":
-        return generalMerchants?.filter(
+        return renderPriceRangeMatchedGeneral(activePriceRange)?.filter(
           (merchant) => merchant.subcategoryName === activeSubCategory
         );
       case activeCategory === "สินค้าทั่วไป" && activeSubCategory === "ทั้งหมด":
-        return generalMerchants;
+        return renderPriceRangeMatchedGeneral(activePriceRange);
       default:
         return [];
     }
@@ -75,6 +72,20 @@ export default function Result({
       return merchants?.filter(
         (merchant) =>
           merchant.categoryName === "ร้านอาหาร" &&
+          merchant.priceLevel === activePriceRange
+      );
+    }
+  }
+
+  function renderPriceRangeMatchedGeneral(activePriceRange: number) {
+    if (activePriceRange === 0) {
+      return merchants?.filter(
+        (merchant) => merchant.categoryName !== "ร้านอาหาร"
+      );
+    } else {
+      return merchants?.filter(
+        (merchant) =>
+          merchant.categoryName !== "ร้านอาหาร" &&
           merchant.priceLevel === activePriceRange
       );
     }

@@ -117,7 +117,8 @@ export default function Filter({
           ))}
         </Select>
       </div>
-      {activeCategory === "ร้านอาหารและเครื่องดื่ม" ? (
+      {activeCategory === "ร้านอาหารและเครื่องดื่ม" ||
+      activeCategory === "สินค้าทั่วไป" ? (
         <div>
           <Typography.Title level={5}>ราคา</Typography.Title>
           <Select
