@@ -118,6 +118,7 @@ export default function Filter({
             <InputNumber
               style={{ width: "100%", textAlign: "center" }}
               placeholder="ราคาต่ำสุด"
+              min={0}
             />
             <Typography.Text type="secondary">-</Typography.Text>
             <InputNumber
@@ -127,6 +128,7 @@ export default function Filter({
                 textAlign: "center",
               }}
               placeholder="ราคาสูงสุด"
+              min={0}
             />
           </Space>
           <Button block style={{ marginTop: 6 }}>
