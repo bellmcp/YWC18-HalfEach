@@ -134,8 +134,11 @@ export default function CardItem({
               <Space size="small">
                 <Text strong>เมนูแนะนำ:</Text>
                 <Text type="secondary">
-                  {recommendedItems.map((item) => (
-                    <>{item} </>
+                  {recommendedItems.map((item, index) => (
+                    <>
+                      {item}
+                      {index !== recommendedItems.length - 1 ? <>, </> : null}
+                    </>
                   ))}
                 </Text>
               </Space>

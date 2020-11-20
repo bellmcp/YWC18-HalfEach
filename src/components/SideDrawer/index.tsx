@@ -2,7 +2,6 @@ import React from "react";
 import { Drawer } from "antd";
 import Filter from "../Filter";
 import { CategoryType } from "../../common/types";
-import { LeftOutlined } from "@ant-design/icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
