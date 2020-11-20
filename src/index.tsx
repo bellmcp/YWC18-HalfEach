@@ -1,14 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { ConfigProvider } from "antd";
+import thTH from "antd/lib/locale/th_TH";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ConfigProvider locale={thTH}>
+      <App />
+    </ConfigProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
