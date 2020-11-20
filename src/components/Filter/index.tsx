@@ -65,6 +65,10 @@ export default function Filter({
     setActiveProvince(value);
   }
 
+  const uniqueSubCategories = Array.from(
+    new Set(renderActiveCategory(activeCategory))
+  );
+
   return (
     <Space direction="vertical" size="large" style={{ width: "100%" }}>
       <div>
@@ -164,7 +168,7 @@ export default function Filter({
             <Radio style={radioStyle} value="ทั้งหมด">
               ทั้งหมด
             </Radio>
-            {renderActiveCategory(activeCategory)?.map((item, index) => (
+            {uniqueSubCategories?.map((item, index) => (
               <Radio style={radioStyle} value={item}>
                 {item}
               </Radio>
