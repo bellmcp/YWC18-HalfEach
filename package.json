@@ -1,7 +1,7 @@
 {
   "name": "ywc18-halfeach",
   "version": "0.1.0",
-  "private": true,
+  "homepage": "https://bellmcp.github.io/YWC18-HalfEach/",
   "dependencies": {
     "@craco/craco": "^5.8.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
@@ -17,6 +17,9 @@
     "antd": "^4.8.4",
     "axios": "^0.21.0",
     "craco-less": "^1.17.0",
+    "cross-env": "^7.0.2",
+    "gh-pages": "^3.1.0",
+    "parcel-bundler": "^1.12.4",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-media": "^2.0.0-rc.1",
@@ -27,7 +30,9 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test"
+    "test": "craco test",
+    "predeploy": "craco build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

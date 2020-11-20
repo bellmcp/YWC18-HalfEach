@@ -21,6 +21,10 @@
     "jsx": "react"
   },
   "include": [
-    "src"
+    "src/**/*"
+  ],
+  "exclude": [
+    ".git",
+    "node_modules"
   ]
 }
