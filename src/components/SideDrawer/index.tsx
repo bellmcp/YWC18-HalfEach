@@ -13,6 +13,8 @@ interface SideDrawerProps {
   priceRange: string[] | undefined;
   activeCategory: string;
   setActiveCategory: (activeCategory: string) => void;
+  activePriceRange: number;
+  setActivePriceRange: (activePriceRange: number) => void;
 }
 
 export default function SideDrawer({
@@ -23,6 +25,8 @@ export default function SideDrawer({
   priceRange,
   activeCategory,
   setActiveCategory,
+  activePriceRange,
+  setActivePriceRange,
 }: SideDrawerProps) {
   return (
     <Drawer
@@ -61,6 +65,8 @@ export default function SideDrawer({
         priceRange={priceRange}
         activeCategory={activeCategory}
         setActiveCategory={setActiveCategory}
+        activePriceRange={activePriceRange}
+        setActivePriceRange={setActivePriceRange}
       />
     </Drawer>
   );

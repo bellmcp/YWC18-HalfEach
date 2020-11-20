@@ -31,6 +31,7 @@ function App() {
   const [activeCategory, setActiveCategory] = useState(
     "ร้านอาหารและเครื่องดื่ม"
   );
+  const [activePriceRange, setActivePriceRange] = useState(0);
 
   useEffect(() => {
     axios
@@ -79,6 +80,8 @@ function App() {
             priceRange={priceRange}
             activeCategory={activeCategory}
             setActiveCategory={setActiveCategory}
+            activePriceRange={activePriceRange}
+            setActivePriceRange={setActivePriceRange}
           />
           <Breadcrumb>
             <Breadcrumb.Item>
@@ -108,10 +111,16 @@ function App() {
                 priceRange={priceRange}
                 activeCategory={activeCategory}
                 setActiveCategory={setActiveCategory}
+                activePriceRange={activePriceRange}
+                setActivePriceRange={setActivePriceRange}
               />
             )}
             <Content style={{ marginLeft: !matches.large ? 0 : 30 }}>
-              <ShopCard merchants={merchants} />
+              <ShopCard
+                merchants={merchants}
+                activeCategory={activeCategory}
+                activePriceRange={activePriceRange}
+              />
             </Content>
           </Layout>
         </Content>

@@ -13,6 +13,8 @@ interface FilterProps {
   priceRange: string[] | undefined;
   activeCategory: string;
   setActiveCategory: (activeCategory: string) => void;
+  activePriceRange: number;
+  setActivePriceRange: (activePriceRange: number) => void;
 }
 
 export default function Filter({
@@ -21,6 +23,8 @@ export default function Filter({
   priceRange,
   activeCategory,
   setActiveCategory,
+  activePriceRange,
+  setActivePriceRange,
 }: FilterProps) {
   const radioStyle = {
     display: "block",
@@ -45,6 +49,10 @@ export default function Filter({
       default:
         return [""];
     }
+  }
+
+  function handlePriceRangeSelect(value: number) {
+    setActivePriceRange(value);
   }
 
   return (
@@ -91,10 +99,14 @@ export default function Filter({
       {activeCategory === "ร้านอาหารและเครื่องดื่ม" ? (
         <div>
           <Typography.Title level={5}>ราคา</Typography.Title>
-          <Select placeholder="กรุณาเลือก" style={{ width: "100%" }}>
-            <Select.Option value="all">ทั้งหมด</Select.Option>
+          <Select
+            placeholder="กรุณาเลือก"
+            onChange={handlePriceRangeSelect}
+            style={{ width: "100%" }}
+          >
+            <Select.Option value={0}>ทั้งหมด</Select.Option>
             {priceRange?.map((item, index) => (
-              <Select.Option value={index}>{item}</Select.Option>
+              <Select.Option value={index + 1}>{item}</Select.Option>
             ))}
           </Select>
         </div>
