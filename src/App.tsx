@@ -89,7 +89,7 @@ function App() {
           />
           <Breadcrumb>
             <Breadcrumb.Item>
-              <a href="/">
+              <a href="/YWC18-HalfEach/">
                 <u>หน้าแรก</u>
               </a>
             </Breadcrumb.Item>

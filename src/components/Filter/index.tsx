@@ -135,7 +135,10 @@ export default function Filter({
       ) : (
         <div>
           <Typography.Title level={5}>ช่วงราคาสินค้า (บาท)</Typography.Title>
-          <Space size="small">
+          <Space
+            size="small"
+            style={{ width: "100%", justifyContent: "space-between" }}
+          >
             <InputNumber
               style={{ width: "100%", textAlign: "center" }}
               placeholder="ราคาต่ำสุด"
