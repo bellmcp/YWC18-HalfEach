@@ -2,6 +2,9 @@ import React from "react";
 import { Drawer } from "antd";
 import Filter from "../Filter";
 import { CategoryType } from "../../common/types";
+import { LeftOutlined } from "@ant-design/icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface SideDrawerProps {
   onClose: () => void;
@@ -29,16 +32,29 @@ export default function SideDrawer({
           style={{
             textAlign: "center",
             fontSize: "1.5rem",
+            color: "#fff",
           }}
         >
           กรอกผล
         </div>
+      }
+      closeIcon={
+        <FontAwesomeIcon
+          icon={faTimes}
+          color="#fff"
+          size="lg"
+          style={{ position: "absolute", top: 16, left: 0 }}
+        />
       }
       placement="right"
       width="100%"
       closable={true}
       onClose={onClose}
       visible={visible}
+      headerStyle={{
+        backgroundColor: "rgb(42,67,101)",
+        fill: "#fff",
+      }}
     >
       <Filter
         provinces={provinces}
