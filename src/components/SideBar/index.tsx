@@ -11,6 +11,8 @@ interface SideBarProps {
   setActiveCategory: (activeCategory: string) => void;
   activePriceRange: number;
   setActivePriceRange: (activePriceRange: number) => void;
+  activeSubCategory: string;
+  setActiveSubCategory: (activeSubCategory: string) => void;
 }
 
 export default function SideBar({
@@ -21,6 +23,8 @@ export default function SideBar({
   setActiveCategory,
   activePriceRange,
   setActivePriceRange,
+  activeSubCategory,
+  setActiveSubCategory,
 }: SideBarProps) {
   return (
     <Layout.Sider
@@ -42,6 +46,8 @@ export default function SideBar({
         setActiveCategory={setActiveCategory}
         activePriceRange={activePriceRange}
         setActivePriceRange={setActivePriceRange}
+        activeSubCategory={activeSubCategory}
+        setActiveSubCategory={setActiveSubCategory}
       />
     </Layout.Sider>
   );

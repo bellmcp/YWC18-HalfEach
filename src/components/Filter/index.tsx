@@ -15,6 +15,8 @@ interface FilterProps {
   setActiveCategory: (activeCategory: string) => void;
   activePriceRange: number;
   setActivePriceRange: (activePriceRange: number) => void;
+  activeSubCategory: string;
+  setActiveSubCategory: (activeSubCategory: string) => void;
 }
 
 export default function Filter({
@@ -25,14 +27,14 @@ export default function Filter({
   setActiveCategory,
   activePriceRange,
   setActivePriceRange,
+  activeSubCategory,
+  setActiveSubCategory,
 }: FilterProps) {
   const radioStyle = {
     display: "block",
     height: "30px",
     lineHeight: "30px",
   };
-
-  const [activeSubCategory, setActiveSubCategory] = useState(0);
 
   function renderActiveCategory(activeCategory: string) {
     switch (activeCategory) {
@@ -61,7 +63,10 @@ export default function Filter({
         <Typography.Title level={5}>ประเภทร้านค้า</Typography.Title>
         <Radio.Group
           defaultValue={1}
-          onChange={(e) => setActiveCategory(e.target.value)}
+          onChange={(e) => {
+            setActiveCategory(e.target.value);
+            setActiveSubCategory("ทั้งหมด");
+          }}
           value={activeCategory}
         >
           <Radio style={radioStyle} value={""}>
@@ -143,12 +148,14 @@ export default function Filter({
           <Radio.Group
             onChange={(e) => setActiveSubCategory(e.target.value)}
             value={activeSubCategory}
+            defaultValue={activeSubCategory}
           >
-            <Radio style={radioStyle} value={0}>
+            {console.log(activeSubCategory)}
+            <Radio style={radioStyle} value="ทั้งหมด">
               ทั้งหมด
             </Radio>
             {renderActiveCategory(activeCategory)?.map((item, index) => (
-              <Radio style={radioStyle} value={index + 1}>
+              <Radio style={radioStyle} value={item}>
                 {item}
               </Radio>
             ))}

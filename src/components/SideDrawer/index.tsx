@@ -15,6 +15,8 @@ interface SideDrawerProps {
   setActiveCategory: (activeCategory: string) => void;
   activePriceRange: number;
   setActivePriceRange: (activePriceRange: number) => void;
+  activeSubCategory: string;
+  setActiveSubCategory: (activeSubCategory: string) => void;
 }
 
 export default function SideDrawer({
@@ -27,6 +29,8 @@ export default function SideDrawer({
   setActiveCategory,
   activePriceRange,
   setActivePriceRange,
+  activeSubCategory,
+  setActiveSubCategory,
 }: SideDrawerProps) {
   return (
     <Drawer
@@ -67,6 +71,8 @@ export default function SideDrawer({
         setActiveCategory={setActiveCategory}
         activePriceRange={activePriceRange}
         setActivePriceRange={setActivePriceRange}
+        activeSubCategory={activeSubCategory}
+        setActiveSubCategory={setActiveSubCategory}
       />
     </Drawer>
   );

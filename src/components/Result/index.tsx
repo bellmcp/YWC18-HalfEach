@@ -9,6 +9,7 @@ interface ResultProps {
   merchants: MerchantType[] | undefined;
   activeCategory: string;
   activePriceRange: number;
+  activeSubCategory: string;
 }
 
 const { Title, Text } = Typography;
@@ -17,23 +18,43 @@ export default function Result({
   merchants,
   activeCategory,
   activePriceRange,
+  activeSubCategory,
 }: ResultProps) {
   const matches = useMedia({ queries: MEDIA_QUERIES });
   const generalMerchants = merchants?.filter(
     (merchant) => merchant.categoryName !== "ร้านอาหาร"
   );
 
-  function renderMerchantsList(activeCategory: string) {
-    switch (activeCategory) {
-      case "":
+  function renderMerchantsList(
+    activeCategory: string,
+    activeSubCategory: string
+  ) {
+    switch (true) {
+      case activeCategory === "":
         return merchants;
-      case "ร้านอาหารและเครื่องดื่ม":
+      case activeCategory === "ร้านอาหารและเครื่องดื่ม" &&
+        activeSubCategory !== "ทั้งหมด" &&
+        activeSubCategory !== "อาหารทั่วไป อาหารตามสั่ง อาหารจานเดียว":
+        return [];
+      case activeCategory === "ร้านอาหารและเครื่องดื่ม":
         return renderPriceRangeMatchedRestaurant(activePriceRange);
-      case "ร้านค้า OTOP":
+      case activeCategory === "ร้านค้า OTOP":
         return [];
-      case "ร้านธงฟ้า":
+      case activeCategory === "ร้านธงฟ้า":
         return [];
-      case "สินค้าทั่วไป":
+      case activeCategory === "สินค้าทั่วไป" &&
+        activeSubCategory === "สินค้าเกี่ยวกับการตกแต่งบ้าน":
+        return generalMerchants?.filter(
+          (merchant) =>
+            merchant.subcategoryName ===
+            "สินค้า และ บริการ เกี่ยวกับการตกแต่งบ้าน"
+        );
+      case activeCategory === "สินค้าทั่วไป" &&
+        activeSubCategory === "ร้านขายเสื้อผ้า / เครื่องประดับ / สินค้าแฟชั่น":
+        return generalMerchants?.filter(
+          (merchant) => merchant.subcategoryName === activeSubCategory
+        );
+      case activeCategory === "สินค้าทั่วไป" && activeSubCategory === "ทั้งหมด":
         return generalMerchants;
       default:
         return [];
@@ -56,12 +77,15 @@ export default function Result({
 
   return (
     <>
-      {renderMerchantsList(activeCategory)?.map((item, index) => (
-        <CardItem {...item} key={index} />
-      ))}
+      {renderMerchantsList(activeCategory, activeSubCategory)?.map(
+        (item, index) => (
+          <CardItem {...item} key={index} />
+        )
+      )}
       <div style={{ margin: "30px 0" }}>
         <Row justify="center" align="middle">
-          {renderMerchantsList(activeCategory)?.length !== 0 ? (
+          {renderMerchantsList(activeCategory, activeSubCategory)?.length !==
+          0 ? (
             <Col style={{ width: !matches.large ? "100%" : "50%" }}>
               <Button size="large" block>
                 ดูเพิ่มเติม
