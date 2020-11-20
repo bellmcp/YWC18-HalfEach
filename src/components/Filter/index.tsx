@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Radio, Select, Typography, Space, InputNumber, Button } from "antd";
 import { CategoryType } from "../../common/types";
 import {
@@ -17,6 +17,8 @@ interface FilterProps {
   setActivePriceRange: (activePriceRange: number) => void;
   activeSubCategory: string;
   setActiveSubCategory: (activeSubCategory: string) => void;
+  activeProvince: number;
+  setActiveProvince: (activeProvince: number) => void;
 }
 
 export default function Filter({
@@ -29,6 +31,8 @@ export default function Filter({
   setActivePriceRange,
   activeSubCategory,
   setActiveSubCategory,
+  activeProvince,
+  setActiveProvince,
 }: FilterProps) {
   const radioStyle = {
     display: "block",
@@ -57,6 +61,10 @@ export default function Filter({
     setActivePriceRange(value);
   }
 
+  function handleProvinceSelect(value: number) {
+    setActiveProvince(value);
+  }
+
   return (
     <Space direction="vertical" size="large" style={{ width: "100%" }}>
       <div>
@@ -81,15 +89,19 @@ export default function Filter({
       </div>
       <div>
         <Typography.Title level={5}>จังหวัด / ใกล้ฉัน</Typography.Title>
-        <Select defaultValue="nearme" style={{ width: "100%" }}>
-          <Select.Option value="nearme">
+        <Select
+          defaultValue={activeProvince}
+          onChange={handleProvinceSelect}
+          style={{ width: "100%" }}
+        >
+          <Select.Option value={0}>
             <FontAwesomeIcon
               icon={faMapMarkerAlt}
               style={{ marginRight: 10 }}
             />
             พื้นที่ใกล้ฉัน
           </Select.Option>
-          <Select.Option value="all">
+          <Select.Option value={1}>
             <FontAwesomeIcon
               icon={faMapMarkedAlt}
               style={{ marginRight: 10 }}
@@ -97,7 +109,7 @@ export default function Filter({
             สถานที่ทั้งหมด
           </Select.Option>
           {provinces?.map((item, index) => (
-            <Select.Option value={index}>{item}</Select.Option>
+            <Select.Option value={index + 2}>{item}</Select.Option>
           ))}
         </Select>
       </div>
@@ -119,7 +131,6 @@ export default function Filter({
       ) : (
         <div>
           <Typography.Title level={5}>ช่วงราคาสินค้า (บาท)</Typography.Title>
-
           <Space size="small">
             <InputNumber
               style={{ width: "100%", textAlign: "center" }}
@@ -150,7 +161,6 @@ export default function Filter({
             value={activeSubCategory}
             defaultValue={activeSubCategory}
           >
-            {console.log(activeSubCategory)}
             <Radio style={radioStyle} value="ทั้งหมด">
               ทั้งหมด
             </Radio>

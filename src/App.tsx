@@ -31,6 +31,7 @@ function App() {
   );
   const [activePriceRange, setActivePriceRange] = useState(0);
   const [activeSubCategory, setActiveSubCategory] = useState("ทั้งหมด");
+  const [activeProvince, setActiveProvince] = useState(0);
 
   useEffect(() => {
     axios
@@ -83,6 +84,8 @@ function App() {
             setActivePriceRange={setActivePriceRange}
             activeSubCategory={activeSubCategory}
             setActiveSubCategory={setActiveSubCategory}
+            activeProvince={activeProvince}
+            setActiveProvince={setActiveProvince}
           />
           <Breadcrumb>
             <Breadcrumb.Item>
@@ -116,6 +119,8 @@ function App() {
                 setActivePriceRange={setActivePriceRange}
                 activeSubCategory={activeSubCategory}
                 setActiveSubCategory={setActiveSubCategory}
+                activeProvince={activeProvince}
+                setActiveProvince={setActiveProvince}
               />
             )}
             <Content style={{ marginLeft: !matches.large ? 0 : 30 }}>
@@ -124,6 +129,7 @@ function App() {
                 activeCategory={activeCategory}
                 activePriceRange={activePriceRange}
                 activeSubCategory={activeSubCategory}
+                activeProvince={activeProvince}
               />
             </Content>
           </Layout>

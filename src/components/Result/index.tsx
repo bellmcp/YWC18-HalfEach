@@ -10,6 +10,7 @@ interface ResultProps {
   activeCategory: string;
   activePriceRange: number;
   activeSubCategory: string;
+  activeProvince: number;
 }
 
 const { Title, Text } = Typography;
@@ -19,6 +20,7 @@ export default function Result({
   activeCategory,
   activePriceRange,
   activeSubCategory,
+  activeProvince,
 }: ResultProps) {
   const matches = useMedia({ queries: MEDIA_QUERIES });
   const generalMerchants = merchants?.filter(
@@ -27,9 +29,12 @@ export default function Result({
 
   function renderMerchantsList(
     activeCategory: string,
-    activeSubCategory: string
+    activeSubCategory: string,
+    activeProvince: number
   ) {
     switch (true) {
+      case activeProvince > 2:
+        return [];
       case activeCategory === "":
         return merchants;
       case activeCategory === "ร้านอาหารและเครื่องดื่ม" &&
@@ -77,15 +82,20 @@ export default function Result({
 
   return (
     <>
-      {renderMerchantsList(activeCategory, activeSubCategory)?.map(
-        (item, index) => (
-          <CardItem {...item} key={index} />
-        )
-      )}
+      {renderMerchantsList(
+        activeCategory,
+        activeSubCategory,
+        activeProvince
+      )?.map((item, index) => (
+        <CardItem {...item} key={index} />
+      ))}
       <div style={{ margin: "30px 0" }}>
         <Row justify="center" align="middle">
-          {renderMerchantsList(activeCategory, activeSubCategory)?.length !==
-          0 ? (
+          {renderMerchantsList(
+            activeCategory,
+            activeSubCategory,
+            activeProvince
+          )?.length !== 0 ? (
             <Col style={{ width: !matches.large ? "100%" : "50%" }}>
               <Button size="large" block>
                 ดูเพิ่มเติม
