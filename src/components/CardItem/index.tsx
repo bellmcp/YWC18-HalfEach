@@ -3,12 +3,7 @@ import { useMedia } from "react-media";
 import { MEDIA_QUERIES } from "../../common/media";
 import { Card, Row, Col, Typography, Divider, Space, Tag, Tooltip } from "antd";
 import { MerchantType } from "../../common/types";
-import {
-  faCarSide,
-  faDog,
-  faEdit,
-  faCircleNotch,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCarSide, faDog, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const { Title, Text } = Typography;
@@ -144,7 +139,7 @@ export default function CardItem({
                   ))}
                 </Text>
               </Space>
-              <Divider style={{ margin: "10px 0", border: "none" }} />
+              <Divider style={{ margin: "5px 0", border: "none" }} />
               <Space size="small">
                 {facilities.map((item) => (
                   <Tooltip title={item}>
