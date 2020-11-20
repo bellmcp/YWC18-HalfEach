@@ -64,8 +64,14 @@ export default function NavBar({
             {!matches.large ? null : (
               <Select
                 size="large"
+                bordered={false}
                 defaultValue="nearme"
-                style={{ width: "20%" }}
+                style={{
+                  width: "20%",
+                  backgroundColor: "#fff",
+                  boxShadow: "0px 0px 1px black",
+                  borderRadius: "10px 0 0 10px",
+                }}
               >
                 <Option value="nearme">
                   <FontAwesomeIcon
@@ -88,14 +94,15 @@ export default function NavBar({
             )}
             <Select
               showSearch
+              bordered={false}
               suffixIcon={<></>}
               size="large"
               style={{
                 width: !matches.large ? "calc(100% - 90px)" : "75%",
+                backgroundColor: "#fff",
+                boxShadow: "0px 0px 1px black",
               }}
               placeholder="ค้นหา ชื่อ ร้านอาหาร และเครื่องดื่ม ร้านธงฟ้า ร้านค้า OTOP และสินค้าทั่วไป"
-              // optionFilterProp="children"
-              // filterOption={(input, option) => option?.indexOf(input) >= 0}
             >
               {categories?.map((item, index) => (
                 <Option value={item?.name}>
@@ -108,7 +115,13 @@ export default function NavBar({
               ))}
             </Select>
             <Button
-              style={{ width: !matches.large ? "50px" : "5%" }}
+              style={{
+                width: !matches.large ? "50px" : "5%",
+                borderRadius: "0 10px 10px 0",
+                border: "none",
+                backgroundColor: "rgb(248, 248, 248)",
+                boxShadow: "0px 0px 1px black",
+              }}
               size="large"
               icon={<SearchOutlined />}
             />
