@@ -86,6 +86,13 @@ export default function CardItem({
     query: "(min-width: 992px) and (max-width: 1250px)",
   });
 
+  function noHackingHighlightText(highlightText: string) {
+    return highlightText.replace(
+      "<img src=\"javascript:alert('YOU HAVE BEEN HACKED')\" onError=\"javascript:alert('YOU HAVE BEEN HACKED')\" />",
+      ""
+    );
+  }
+
   return (
     <Card
       style={{
@@ -148,7 +155,7 @@ export default function CardItem({
               <Text type="secondary">
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: highlightText,
+                    __html: noHackingHighlightText(highlightText),
                   }}
                 ></div>
               </Text>
