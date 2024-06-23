@@ -1,60 +1,67 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import "./App.less";
-import bg from "./assets/img/bg.png";
-import { useMedia } from "react-media";
-import { MEDIA_QUERIES } from "./common/media";
-import { Breadcrumb, Layout, Typography, Row } from "antd";
-import NavBar from "./components/NavBar";
-import ShopCard from "./components/Result";
-import SideBar from "./components/SideBar";
-import SideDrawer from "./components/SideDrawer";
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import './App.less'
+import bg from './assets/img/bg.png'
+import { useMedia } from 'react-media'
+import { MEDIA_QUERIES } from './common/media'
+import { Breadcrumb, Layout, Typography, Row } from 'antd'
+import NavBar from './components/NavBar'
+import ShopCard from './components/Result'
+import SideBar from './components/SideBar'
+import SideDrawer from './components/SideDrawer'
 
-const { Title } = Typography;
-const { Content, Footer } = Layout;
+import mockResponse from './mock/response.json'
+
+const { Title } = Typography
+const { Content, Footer } = Layout
 
 function App() {
-  const matches = useMedia({ queries: MEDIA_QUERIES });
-  const [visible, setVisible] = useState(false);
+  const matches = useMedia({ queries: MEDIA_QUERIES })
+  const [visible, setVisible] = useState(false)
   const showDrawer = () => {
-    setVisible(true);
-  };
+    setVisible(true)
+  }
   const onClose = () => {
-    setVisible(false);
-  };
-  const [categories, setCategories] = useState();
-  const [provinces, setProvinces] = useState();
-  const [priceRange, setPriceRange] = useState();
-  const [merchants, setMerchants] = useState();
+    setVisible(false)
+  }
+  const [categories, setCategories] = useState()
+  const [provinces, setProvinces] = useState()
+  const [priceRange, setPriceRange] = useState()
+  const [merchants, setMerchants] = useState()
   const [activeCategory, setActiveCategory] = useState(
-    "ร้านอาหารและเครื่องดื่ม"
-  );
-  const [activePriceRange, setActivePriceRange] = useState(0);
-  const [activeSubCategory, setActiveSubCategory] = useState("ทั้งหมด");
-  const [activeProvince, setActiveProvince] = useState(0);
+    'ร้านอาหารและเครื่องดื่ม'
+  )
+  const [activePriceRange, setActivePriceRange] = useState(0)
+  const [activeSubCategory, setActiveSubCategory] = useState('ทั้งหมด')
+  const [activeProvince, setActiveProvince] = useState(0)
 
   useEffect(() => {
     axios
-      .get("https://panjs.com/ywc18.json")
+      .get('https://panjs.com/ywc18.json')
       .then(({ data }) => {
-        setCategories(data.categories);
-        setProvinces(data.provinces);
-        setPriceRange(data.priceRange);
-        setMerchants(data.merchants);
+        setCategories(data.categories)
+        setProvinces(data.provinces)
+        setPriceRange(data.priceRange)
+        setMerchants(data.merchants)
       })
       .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+        console.log(err)
+        // Update: API is currently out of service, Implicitly set data from mock response
+        setCategories(mockResponse.categories as any)
+        setProvinces(mockResponse.provinces as any)
+        setPriceRange(mockResponse.priceRange as any)
+        setMerchants(mockResponse.merchants as any)
+      })
+  }, [])
 
   return (
     <>
       <Layout
         style={{
           backgroundImage: `url(${bg})`,
-          backgroundPosition: "center center",
-          backgroundSize: "cover",
-          backgroundAttachment: "fixed",
+          backgroundPosition: 'center center',
+          backgroundSize: 'cover',
+          backgroundAttachment: 'fixed',
         }}
       >
         <NavBar
@@ -63,13 +70,13 @@ function App() {
           showDrawer={showDrawer}
         />
         <Row
-          justify="start"
-          align="middle"
+          justify='start'
+          align='middle'
           style={{
             margin: 0,
-            backgroundColor: "rgb(39, 57, 124)",
-            padding: !matches.large ? "0 15px" : "0 50px",
-            minHeight: "50px",
+            backgroundColor: 'rgb(39, 57, 124)',
+            padding: !matches.large ? '0 15px' : '0 50px',
+            minHeight: '50px',
           }}
         >
           <SideDrawer
@@ -89,7 +96,7 @@ function App() {
           />
           <Breadcrumb>
             <Breadcrumb.Item>
-              <a href="/YWC18-HalfEach/">
+              <a href='/YWC18-HalfEach/'>
                 <u>หน้าแรก</u>
               </a>
             </Breadcrumb.Item>
@@ -101,13 +108,13 @@ function App() {
 
         <Content
           style={{
-            padding: !matches.large ? "30px 15px" : "30px 50px",
+            padding: !matches.large ? '30px 15px' : '30px 50px',
           }}
         >
           <Title level={3} style={{ marginBottom: 40 }}>
             ผลการค้นหา {activeCategory} ทั้งหมด
           </Title>
-          <Layout style={{ background: "none" }}>
+          <Layout style={{ background: 'none' }}>
             {!matches.large ? null : (
               <SideBar
                 provinces={provinces}
@@ -134,14 +141,14 @@ function App() {
             </Content>
           </Layout>
         </Content>
-        <Footer style={{ textAlign: "center", backgroundColor: "#fff" }}>
-          Created by <a href="https://bellmcp.work">Wutipat Khamnuansin</a>{" "}
+        <Footer style={{ textAlign: 'center', backgroundColor: '#fff' }}>
+          Created by <a href='https://bellmcp.work'>Wutipat Khamnuansin</a>{' '}
           {matches.small || matches.xs ? <br /> : null}for 18th Young Webmaster
           Camp.
         </Footer>
       </Layout>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
